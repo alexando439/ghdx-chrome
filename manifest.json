@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "GHDx Link Extension",
+  "description": "This extension allows the user to click on a GHDx internal link and redirects to the appropriate folder in the J drive.",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://internal-ghdx.healthdata.org/*",
+        "http://internal-ghdx.healthdata.org/*"
+      ],
+    "js": ["jquery-3.2.1.min.js", "content.js"]
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
