@@ -11,6 +11,7 @@
         "*://internal-ghdx.healthdata.org/*",
         "*://dev.ghdx.healthdata.org/*",
         "*://stage.ghdx.healthdata.org/*",
+        "*://internal.stage.ghdx.healthdata.org/*",
         "*://*.k8s.datatools.ihme.washington.edu/*"
       ],
     "js": ["jquery-3.2.1.min.js", "content.js"]
