@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "GHDx Link Extension",
-  "description": "This extension allows the user to click on a GHDx internal link and redirects to the appropriate folder in the J drive.",
-  "version": "1.0",
+  "description": "This extension allows the user to click on a GHDx internal link and open it, or browse the content in the J drive.",
+  "version": "1.5",
 
   "content_scripts": [
     {
