@@ -43,7 +43,7 @@ function handleClick (e) {
 
 	// Adjust url if Mac
     if (navigator.platform == 'MacIntel') {
-		var href = e.target.href.toLowerCase().replace("j:", "/Volumes/snfs");
+		href = e.target.href.toLowerCase().replace("j:", "/Volumes/snfs");
     }
 
     chrome.runtime.sendMessage({"message": "open_new_tab", "url": href})
