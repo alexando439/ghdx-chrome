@@ -20,32 +20,31 @@ chrome.runtime.onMessage.addListener(
 $(document).ready(processJLinks);
 
 
-// If mac, add custom event to click handler
+// Add custom event to click handler
 function processJLinks() {
-    // Quit if not Mac
-    if (navigator.platform !== 'MacIntel') {
-        return;
-    }
-
     var links = document.querySelectorAll(".files-table a")
 
     for (var i = 0; i < links.length; i++) {
-        // Only bind to J drive links
-        if (links[i].href && links[i].href.substring(0, 10) === "file://j:/") {
+        // For some reason, Chrome on Windows adds an extra '/' to href='file://'?
+        // Only J drive links should be in .files-table, so just match all file links
+        if (links[i].href && links[i].href.substring(0, 6).toLowerCase() === "file:/") {
             links[i].addEventListener("click", handleClick);
         }
       }
 
 }
 
-// Handle clicking on a J drive link
-// Called only if mac and known J drive link
+// Called if clicking on a link in the files-table
 function handleClick (e) {
     // Prevent the browser from following the link
     e.preventDefault();
 
-    // Replace link with Mac link
-    var href = e.target.href.replace("j:", "/Volumes/snfs");
+	var href = e.target.href;
+
+	// Adjust url if Mac
+    if (navigator.platform == 'MacIntel') {
+		href = e.target.href.toLowerCase().replace("j:", "/Volumes/snfs");
+    }
 
     chrome.runtime.sendMessage({"message": "open_new_tab", "url": href})
 }
